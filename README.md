@@ -1,7 +1,6 @@
 ## 使用したライブラリ  
 tweepy (TwiiterのAPIを叩く)  
 random (結果を選ぶ)  
-urllib (livedoorのWeather Hacksに接続)  
 apscheduler (定期ツイートのためのスケジューラ)  
 datetime (現在時刻を取得)  
 sys (エラーが出た時処理を終了)  

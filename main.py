@@ -15,7 +15,7 @@ def tweet(api, status, last):
 
     if (not status.retweeted) and ("RT @" not in tweet_Text) and (last < id2date(status.id)):
 
-        if (("おさしみ" in tweet_Text or "お刺身" in tweet_Text) and "ガチャ" in status.text) and "【おさしみ10連】" not in status.text:
+        if (("おさしみ" in tweet_Text or "お刺身" in tweet_Text) and "ガチャ" in status.text) and ("【おさしみ" and "連ガチャ】") not in status.text:
             tweet = "@" + str(status.user.screen_name) + " "
 
             if "@" in tweet_Text and " " in tweet_Text[tweet_Text.index("@"):tweet_Text.index("@")+17]:
@@ -23,10 +23,7 @@ def tweet(api, status, last):
                     tweet += tweet_Text[i]
                     if tweet_Text[i] == " " and not(tweet_Text[i+1] == "@"): break
 
-            if "10連" in tweet_Text:
-                sashimi = text.Sashimi(10)
-            else:
-                sashimi = text.Sashimi(1)
+            sashimi = text.Sashimi(tweet_Text)
 
             tweet += sashimi.make_tweet()
 

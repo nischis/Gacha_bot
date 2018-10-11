@@ -2,14 +2,16 @@ import random
 
 class Sashimi:
 
-  def __init__(self, number):
-    self.number = number
+  def __init__(self, text):
+    self.text = text
 
     self.normal = []
     self.special = []
     self.rea = []
     self.super_special = []
     self.pre_text = []
+
+    self.ren = ["2連", "3連","4連","5連","6連","7連","8連","9連","10連"]
 
 
   def open_text(self):
@@ -53,10 +55,15 @@ class Sashimi:
 
     tweet_text = "\n"
 
-    if self.number > 1:
-      tweet_text += "【おさしみ10連】"
+    number = 1
 
-      for i in range(1, self.number + 1):
+    for n in range(0,9):
+      if self.ren[n] in self.text:
+        number = n + 2
+    
+    if number > 1:
+      tweet_text += "【おさしみ" + str(number) + "連ガチャ】"
+      for i in range(1, number + 1):
         tweet_text += "\n" + str(i) + ". "
         tweet_text += self.result()
 
